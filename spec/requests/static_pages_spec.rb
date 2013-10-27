@@ -9,9 +9,14 @@ require 'spec_helper'
         expect(page).to have_content('Everything Baseball')
       end
    
-      it "should have the title 'Home'" do
+      it "should have the base title" do
         visit '/static_pages/home'
-        expect(page).to have_title("Everything Baseball | Home")
+        expect(page).to have_title("Everything Baseball")
+      end
+
+      it "should not have a custom page title" do
+	visit '/static_pages/home'
+	expect(page).not_to have_title('| Home')
       end
     end
 
